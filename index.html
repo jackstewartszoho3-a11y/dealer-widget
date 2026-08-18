@@ -793,7 +793,8 @@ async function placeBooking(status){
       contactId: S.contact?.id || '',
       dealName: dealName,
       amount: String(q.total),
-      productName: p.Product_Name
+      productName: p.Product_Name,
+      days: String(q.days)
     });
     dealId = dealResult?.data?.id || '';
     S.dealId = dealId;
