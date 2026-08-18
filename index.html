@@ -434,7 +434,7 @@ async function crmGetAll(entity) {
 
 async function crmGetProductBookings(productId) {
   try {
-    const result = await callFunction({action: 'getProductBookings', productId, dealId: S.dealId});
+    const result = await callFunction({actionType: 'getProductBookings', productId, dealId: S.dealId});
     const d = result?.data;
     if (Array.isArray(d)) return d;
     if (typeof d === 'string') return JSON.parse(d);
@@ -444,7 +444,7 @@ async function crmGetProductBookings(productId) {
 
 async function crmGetRates(productId) {
   try {
-    const result = await callFunction({action: 'getRates', productId, dealId: S.dealId});
+    const result = await callFunction({actionType: 'getRates', productId, dealId: S.dealId});
     const d = result?.data;
     if (Array.isArray(d)) return d;
     if (typeof d === 'string') return JSON.parse(d);
@@ -805,6 +805,7 @@ async function placeBooking(status){
     name:name,
     productId:p.id,
     dealId:S.dealId,
+    contactId:S.contact?.id || '',
     startDate:S.startDate,
     endDate:S.endDate,
     days:String(q.days),
@@ -817,7 +818,6 @@ async function placeBooking(status){
     deliveryFee:String(q.delivFee),
     bookingType:S.bookingType,
     holdExpiry:holdExpiry||'',
-    bookingId:'',
     ...accParams
   };
 
@@ -827,7 +827,8 @@ async function placeBooking(status){
 
   btn.disabled=false;
   btn.innerHTML='Place Hold';
-  if(result && result.status !== 'error'){
+  const bookingFailed = !result || result.status === 'error' || result?.data?.status === 'error' || result?.data?.code;
+  if(!bookingFailed){
     // Show success splash
     document.getElementById('successDetails').innerHTML=`
       <div class="success-detail-row"><span class="success-detail-label">Client</span><span class="success-detail-value">${contactName}</span></div>
