@@ -421,7 +421,7 @@ async function crmGetAll(entity) {
   if (!action) return mockData(entity);
   if (!S.sdkReady) return mockData(entity);
   try {
-    const result = await callFunction({action, dealId: S.dealId});
+    const result = await callFunction({actionType: action, dealId: S.dealId});
     let d = result?.data;
     if (typeof d === 'string') { try { d = JSON.parse(d); } catch(e) {} }
     if (Array.isArray(d) && d.length) return d;
@@ -734,6 +734,7 @@ function goStep(n){
     if(i===n)s.classList.add('active');
     s.querySelector('span').textContent=i<n?'✓':(i+1);
   });
+  if(n===1 && S.products.length===0){loadProducts();}
   if(n===2){S.calYear=new Date().getFullYear();S.calMonth=new Date().getMonth();renderCal();document.getElementById('delivToggle').checked=false;document.getElementById('delivAddrWrap').style.display='none';}
   if(n===3){calcQuote();renderQuote();renderSummary();}
 }
