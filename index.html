@@ -378,6 +378,9 @@ const S = {
 };
 
 const WORKER = 'https://soft-mud-c8de.jackstewartszoho3.workers.dev/';
+const DEALER_WIDGET_BUILD = '2026-08-18-final-availability-pipeline';
+console.log('Dealer widget build:', DEALER_WIDGET_BUILD);
+
 
 const ICONS = {
   'Wheelchair - Manual':'🦽','Wheelchair - Power':'🦼',
@@ -400,6 +403,7 @@ window.addEventListener("load", async () => {
 // ── CRM API ────────────────────────────────────────────────────────
 async function callFunction(params) {
   try {
+    console.log('Function request:', params);
     const resp = await fetch(WORKER, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -474,7 +478,7 @@ async function crmCreate(entity, data) {
 async function crmUpdate(entity, id, data) {
   if (entity !== 'Hire_Bookings') return null;
   try {
-    return await callFunction({action: 'updateBooking', bookingId: id, status: data.Booking_Status__s, dealId: S.dealId});
+    return await callFunction({actionType: 'updateBooking', bookingId: id, status: data.Booking_Status__s, dealId: S.dealId});
   } catch(e) { return null; }
 }
 
