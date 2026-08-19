@@ -768,6 +768,134 @@ button:disabled,.btn:disabled,.v2-product-select:disabled{
 }
 .success-refitem b{color:#253247!important}
 
+
+
+/* ================================================================
+   DEALER PORTAL V3.2 — CONTRAST / READABILITY FIX
+   ================================================================ */
+
+/* Find Client — section headings were still inheriting dark-theme white. */
+#panel0 .card-head,
+#panel0 .card-head *,
+#panel0 .section-pad h3,
+#panel0 .section-pad h4,
+#panel0 .search-label,
+#panel0 .search-title{
+  color:#263248!important;
+}
+#panel0 .section-pad p,
+#panel0 .search-subtitle{
+  color:#66758A!important;
+}
+
+/* Selected client card — increase hierarchy and contrast. */
+#v2ContactSide .client-summary{
+  background:linear-gradient(135deg,rgba(238,233,255,.80),rgba(242,245,249,.82))!important;
+  border:1px solid rgba(109,61,245,.22)!important;
+  border-radius:11px!important;
+  padding:10px 12px!important;
+}
+#v2ContactSide .client-summary-avatar{
+  background:linear-gradient(135deg,#6D3DF5,#8B5CF6)!important;
+  color:#FFFFFF!important;
+  box-shadow:0 5px 14px rgba(109,61,245,.16)!important;
+}
+#v2ContactSide .small-label{
+  color:#74668F!important;
+  font-size:10px!important;
+  font-weight:650!important;
+}
+#v2ContactSide .side-name{
+  color:#253247!important;
+  font-size:14px!important;
+  font-weight:800!important;
+}
+#v2ContactSide .side-meta{
+  color:#607085!important;
+  font-size:11px!important;
+}
+#v2ContactSide > div:last-child{
+  color:#5F6F83!important;
+}
+#v2ContactSide .inline-check{
+  color:#5F6F83!important;
+}
+#v2ContactSide .inline-check .icon-svg{
+  color:#168A68!important;
+}
+
+/* Accessories heading + subtitle + loading / empty states. */
+#panel1 .v2-section-title h3,
+#panel1 .acc-section h4,
+#panel1 #accPanel h3,
+#panel1 #accPanel h4{
+  color:#263248!important;
+}
+#panel1 .v2-section-title p,
+#panel1 .acc-section p{
+  color:#66758A!important;
+}
+#panel1 .accessory-loading,
+#panel1 .accessory-empty{
+  color:#56667B!important;
+  background:rgba(239,243,247,.78)!important;
+  border-color:rgba(100,116,139,.26)!important;
+  font-weight:600!important;
+}
+#panel1 .accessory-loading .loader{
+  border-color:#D6CFEE!important;
+  border-top-color:#6D3DF5!important;
+}
+
+/* Accessory cards — stronger text contrast without losing glass look. */
+#panel1 .acc-name{
+  color:#253247!important;
+  font-weight:800!important;
+}
+#panel1 .acc-desc{
+  color:#66758A!important;
+}
+#panel1 .acc-rate{
+  color:#5D39C8!important;
+  font-weight:750!important;
+}
+
+/* Final screen support copy — remove remaining white text. */
+#panel4 .success-support{
+  color:#5F6F83!important;
+  background:linear-gradient(135deg,rgba(235,230,255,.72),rgba(237,241,246,.82))!important;
+  border:1px solid rgba(109,61,245,.18)!important;
+}
+#panel4 .success-support,
+#panel4 .success-support *{
+  color:#5F6F83!important;
+}
+#panel4 .success-support .icon-svg{
+  color:#6D3DF5!important;
+}
+#panel4 .success-support b,
+#panel4 .success-support strong{
+  color:#2A3648!important;
+  font-weight:800!important;
+}
+#panel4 .success-equipment-label{
+  color:#66758A!important;
+}
+#panel4 .success-equipment-name{
+  color:#253247!important;
+}
+#panel4 .success-equipment-meta{
+  color:#66758A!important;
+}
+
+/* Safety net: any section labels still using old white theme. */
+.v2-section-title h3{
+  color:#263248!important;
+}
+.v2-section-title p{
+  color:#66758A!important;
+}
+
 </style>
 </head>
 <body>
@@ -1031,7 +1159,7 @@ const S = {
 };
 
 const WORKER = 'https://soft-mud-c8de.jackstewartszoho3.workers.dev/';
-const DEALER_WIDGET_BUILD = '2026-08-19-dealer-widget-v3.1-glass-grey';
+const DEALER_WIDGET_BUILD = '2026-08-19-dealer-widget-v3.2-contrast-fix';
 console.log('Dealer widget build:', DEALER_WIDGET_BUILD);
 
 
